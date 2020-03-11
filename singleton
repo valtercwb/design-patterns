@@ -1,0 +1,30 @@
+public class SingletonClass
+    {
+        private static readonly object _lock = new object();
+        private static SingletonClass _instance;
+
+        public static SingletonClass Instance
+        {
+            get
+            {
+                lock (_lock)
+                {
+                    if (_instance == null)
+                    {
+                        _instance = new SingletonClass();
+                    }
+                    return _instance;
+                }
+            }
+        }
+
+        public SingletonClass()
+        {
+
+        }
+
+        public int id { get; set; }
+        public string code { get; set; } = "Xyz123";
+
+        public string GetSingletonCode() => code;
+    }
